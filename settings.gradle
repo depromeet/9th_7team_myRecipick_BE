@@ -1,1 +1,3 @@
 rootProject.name = 'myrecipick'
+include 'myrecipick-core'
+include 'myrecipick-api'

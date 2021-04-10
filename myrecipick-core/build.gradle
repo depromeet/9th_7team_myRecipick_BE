@@ -1,0 +1,7 @@
+dependencies {
+    implementation 'io.projectreactor:reactor-core:3.4.4'
+    implementation 'software.amazon.awssdk:dynamodb:2.16.38'
+}
+
+jar { enabled = true }
+bootJar { enabled = false }
