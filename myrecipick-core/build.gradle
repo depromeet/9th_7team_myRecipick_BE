@@ -3,5 +3,10 @@ dependencies {
     implementation 'software.amazon.awssdk:dynamodb:2.16.38'
 }
 
-jar { enabled = true }
-bootJar { enabled = false }
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
