@@ -1,6 +1,12 @@
 dependencies {
     implementation 'io.projectreactor:reactor-core:3.4.4'
     implementation 'software.amazon.awssdk:dynamodb:2.16.38'
+    implementation 'com.amazonaws:aws-java-sdk-dynamodb:1.11.997'
+    implementation 'software.amazon.awssdk:dynamodb-enhanced:2.16.40'
+    compile 'com.github.derjust:spring-data-dynamodb:5.1.0'
+
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
 }
 
 jar { enabled = true }
