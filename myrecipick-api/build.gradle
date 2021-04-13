@@ -2,8 +2,4 @@ dependencies {
     implementation project(":myrecipick-core")
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     testImplementation 'io.projectreactor:reactor-test'
-
 }
-
-jar { enabled = true }
-bootJar { enabled = true }
