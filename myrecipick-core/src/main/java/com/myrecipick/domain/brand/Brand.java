@@ -7,7 +7,7 @@ public class Brand {
     private UUID id;
     private String name;
     private String logoImage;
-    private boolean isShow;
+    private Boolean isShow;
 
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
@@ -39,11 +39,11 @@ public class Brand {
         this.logoImage = logoImage;
     }
 
-    public boolean isShow() {
+    public Boolean getIsShow() {
         return isShow;
     }
 
-    public void setShow(boolean show) {
+    public void setIsShow(Boolean show) {
         isShow = show;
     }
 
