@@ -6,8 +6,8 @@ import java.util.UUID;
 public class Brand {
     private UUID id;
     private String name;
-    private String image;
-    private boolean view;
+    private String logoImage;
+    private boolean isShow;
 
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
@@ -31,20 +31,20 @@ public class Brand {
         this.name = name;
     }
 
-    public String getImage() {
-        return image;
+    public String getLogoImage() {
+        return logoImage;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setLogoImage(String logoImage) {
+        this.logoImage = logoImage;
     }
 
-    public boolean isView() {
-        return view;
+    public boolean isShow() {
+        return isShow;
     }
 
-    public void setView(boolean view) {
-        this.view = view;
+    public void setShow(boolean show) {
+        isShow = show;
     }
 
     public LocalDateTime getCreatedDate() {
