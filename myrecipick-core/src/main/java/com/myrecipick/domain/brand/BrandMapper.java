@@ -23,7 +23,7 @@ public class BrandMapper {
         brand.setId(UUID.fromString(attributeValueMap.get("id").s()));
         brand.setName(attributeValueMap.get("name").s());
         brand.setLogoImage(attributeValueMap.get("logoImage").s());
-        brand.setShow(attributeValueMap.get("isShow").bool());
+        brand.setIsShow(attributeValueMap.get("isShow").bool());
         brand.setCreatedDate(LocalDateTime.parse(attributeValueMap.get("createdDate").s()));
         brand.setUpdatedDate(LocalDateTime.parse(attributeValueMap.get("updatedDate").s()));
         return brand;
@@ -34,7 +34,7 @@ public class BrandMapper {
             "id", AttributeValue.builder().s(brand.getId().toString()).build(),
             "name", AttributeValue.builder().s(brand.getName()).build(),
             "logoImage", AttributeValue.builder().s(brand.getLogoImage()).build(),
-            "isShow", AttributeValue.builder().bool(brand.isShow()).build(),
+            "isShow", AttributeValue.builder().bool(brand.getIsShow()).build(),
             "createdDate", AttributeValue.builder().s(brand.getCreatedDate().toString()).build(),
             "updatedDate", AttributeValue.builder().s(brand.getUpdatedDate().toString()).build()
         );
