@@ -21,8 +21,8 @@ public class BrandRepository {
 
     public Flux<Brand> findAll() {
         ScanRequest scanRequest = ScanRequest.builder()
-            .tableName("brand")
-            .scanFilter(Map.of("view", Condition.builder()
+            .tableName("brands")
+            .scanFilter(Map.of("isShow", Condition.builder()
                 .comparisonOperator(ComparisonOperator.EQ)
                 .attributeValueList(AttributeValue.builder()
                     .bool(true)

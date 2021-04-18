@@ -26,6 +26,6 @@ public class Routes {
     @Bean
     RouterFunction<ServerResponse> customers() {
         return route(GET("/").and(RequestPredicates.accept(MediaType.TEXT_PLAIN)), helloWorldService::hello)
-            .andRoute(GET("/brands"), brandService::findAll);
+            .andRoute(GET("/v1/brands"), brandService::findAll);
     }
 }
