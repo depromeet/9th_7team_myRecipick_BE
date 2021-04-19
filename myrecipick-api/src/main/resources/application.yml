@@ -3,3 +3,9 @@ spring:
     active: local
     include:
       - core
+springdoc:
+  version: 1
+  swagger-ui:
+    enabled: true
+  api-docs:
+    enabled: true

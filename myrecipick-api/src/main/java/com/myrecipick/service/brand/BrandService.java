@@ -1,12 +1,9 @@
 package com.myrecipick.service.brand;
 
+import com.myrecipick.domain.brand.Brand;
 import com.myrecipick.domain.brand.BrandRepository;
-import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.BodyInserters;
-import org.springframework.web.reactive.function.server.ServerRequest;
-import org.springframework.web.reactive.function.server.ServerResponse;
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
 
 @Service
 public class BrandService {
@@ -17,9 +14,7 @@ public class BrandService {
         this.brandRepository = brandRepository;
     }
 
-    public Mono<ServerResponse> findAll(ServerRequest request) {
-        return brandRepository.findAll()
-            .collect(Collectors.toList())
-            .flatMap(brands -> ServerResponse.ok().body(BodyInserters.fromValue(brands)));
+    public Flux<Brand> findAll() {
+        return brandRepository.findAll();
     }
 }
