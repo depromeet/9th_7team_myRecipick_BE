@@ -1,7 +1,7 @@
-package com.myrecipick.service.brand;
+package com.myrecipick.api.service.brand;
 
-import com.myrecipick.domain.brand.Brand;
-import com.myrecipick.domain.brand.BrandRepository;
+import com.myrecipick.core.domain.brand.Brand;
+import com.myrecipick.core.domain.brand.BrandRepository;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 

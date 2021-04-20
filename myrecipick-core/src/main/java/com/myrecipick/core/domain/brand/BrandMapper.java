@@ -1,4 +1,4 @@
-package com.myrecipick.domain.brand;
+package com.myrecipick.core.domain.brand;
 
 import java.time.LocalDateTime;
 import java.util.List;
