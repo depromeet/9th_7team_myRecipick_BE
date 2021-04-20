@@ -1,4 +1,4 @@
-package com.myrecipick.config;
+package com.myrecipick.core.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

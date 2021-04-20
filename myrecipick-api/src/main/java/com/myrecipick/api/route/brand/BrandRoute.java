@@ -1,11 +1,11 @@
-package com.myrecipick.routes.brand;
+package com.myrecipick.api.route.brand;
 
 import static org.springdoc.core.fn.builders.apiresponse.Builder.responseBuilder;
 import static org.springdoc.webflux.core.fn.SpringdocRouteBuilder.route;
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
-import com.myrecipick.domain.brand.Brand;
-import com.myrecipick.service.brand.BrandService;
+import com.myrecipick.api.route.brand.dto.GetBrandListResponse;
+import com.myrecipick.api.service.brand.BrandService;
 import java.util.function.Consumer;
 import org.springdoc.core.fn.builders.operation.Builder;
 import org.springframework.context.annotation.Bean;
@@ -30,12 +30,14 @@ public class BrandRoute {
 
     private HandlerFunction<ServerResponse> findAll() {
         return req -> ok()
-            .body(brandService.findAll(), Brand.class);
+            .body(brandService.findAll()
+                .collectList()
+                .map(GetBrandListResponse::ok), GetBrandListResponse.class);
     }
 
     private Consumer<Builder> findAllBrandAPI() {
         return ops -> ops.tag("brand")
             .operationId("findAll").summary("모든 브랜드 조회 API").tags(new String[]{"브랜드 API"})
-            .response(responseBuilder().responseCode("200").implementation(Brand.class));
+            .response(responseBuilder().responseCode("200").implementation(GetBrandListResponse.class));
     }
 }

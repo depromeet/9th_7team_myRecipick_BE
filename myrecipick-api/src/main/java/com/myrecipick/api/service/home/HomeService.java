@@ -1,4 +1,4 @@
-package com.myrecipick.service.home;
+package com.myrecipick.api.service.home;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
