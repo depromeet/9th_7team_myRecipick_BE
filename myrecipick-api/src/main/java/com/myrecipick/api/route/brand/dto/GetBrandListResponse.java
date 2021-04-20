@@ -8,25 +8,25 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 
 @JsonInclude(Include.NON_NULL)
-public class BrandListResponse extends ServiceResponse {
+public class GetBrandListResponse extends ServiceResponse {
 
     private List<Brand> data;
 
-    public BrandListResponse() {
+    public GetBrandListResponse() {
     }
 
-    public BrandListResponse(HttpStatus status, String message,
+    public GetBrandListResponse(HttpStatus status, String message,
         List<Brand> brands) {
         super(status, message);
         this.data = brands;
     }
 
-    public static BrandListResponse ok(List<Brand> brands) {
-        BrandListResponse brandListResponse = new BrandListResponse();
-        brandListResponse.status = HttpStatus.OK;
-        brandListResponse.data = brands;
+    public static GetBrandListResponse ok(List<Brand> brands) {
+        GetBrandListResponse getBrandListResponse = new GetBrandListResponse();
+        getBrandListResponse.status = HttpStatus.OK;
+        getBrandListResponse.data = brands;
 
-        return brandListResponse;
+        return getBrandListResponse;
     }
 
     public List<Brand> getData() {
