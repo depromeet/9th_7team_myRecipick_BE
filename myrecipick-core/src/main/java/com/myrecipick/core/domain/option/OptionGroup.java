@@ -13,7 +13,7 @@ public class OptionGroup {
 
     private List<Option> options;
 
-    private OptionGroupPolicy optionGroupPolicy;
+    private OptionPolicy policy;
 
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
@@ -22,13 +22,13 @@ public class OptionGroup {
     }
 
     public OptionGroup(UUID id, OptionGroupType type, String name, String image,
-        List<Option> options, OptionGroupPolicy optionGroupPolicy, LocalDateTime createdDate, LocalDateTime updatedDate) {
+        List<Option> options, OptionPolicy policy, LocalDateTime createdDate, LocalDateTime updatedDate) {
         this.id = id;
         this.type = type;
         this.name = name;
         this.image = image;
         this.options = options;
-        this.optionGroupPolicy = optionGroupPolicy;
+        this.policy = policy;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
     }
@@ -73,12 +73,12 @@ public class OptionGroup {
         this.options = options;
     }
 
-    public OptionGroupPolicy getOptionGroupPolicy() {
-        return optionGroupPolicy;
+    public OptionPolicy getPolicy() {
+        return policy;
     }
 
-    public void setOptionGroupPolicy(OptionGroupPolicy optionGroupPolicy) {
-        this.optionGroupPolicy = optionGroupPolicy;
+    public void setPolicy(OptionPolicy policy) {
+        this.policy = policy;
     }
 
     public LocalDateTime getCreatedDate() {

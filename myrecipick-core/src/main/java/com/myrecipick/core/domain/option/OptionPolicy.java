@@ -1,46 +1,32 @@
 package com.myrecipick.core.domain.option;
 
-import java.util.Map;
-import java.util.UUID;
-
 public class OptionPolicy {
 
-    private UUID id;
-    private String name;
-    private Map<String, String> policy;
+    private int min;
+    private int max;
 
     public OptionPolicy() {
     }
 
-    public OptionPolicy(UUID id, String name, Map<String, String> policy) {
-        this.id = id;
-        this.name = name;
-        this.policy = policy;
+    public OptionPolicy(int min, int max) {
+        this.min = min;
+        this.max = max;
     }
 
-    public UUID getId() {
-        return id;
+    public int getMin() {
+        return min;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public void setMin(int min) {
+        this.min = min;
     }
 
-    public String getName() {
-        return name;
+    public int getMax() {
+        return max;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMax(int max) {
+        this.max = max;
     }
-
-    public Map<String, String> getPolicy() {
-        return policy;
-    }
-
-    public void setPolicy(Map<String, String> policy) {
-        this.policy = policy;
-    }
-
-
 }
+
