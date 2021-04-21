@@ -2,13 +2,11 @@ package com.myrecipick.api.service.option;
 
 import com.myrecipick.core.domain.option.Option;
 import com.myrecipick.core.domain.option.OptionGroup;
-import com.myrecipick.core.domain.option.OptionGroupPolicy;
 import com.myrecipick.core.domain.option.OptionGroupType;
+import com.myrecipick.core.domain.option.OptionPolicy;
 import com.myrecipick.core.domain.option.OptionType;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -16,7 +14,7 @@ import reactor.core.publisher.Flux;
 @Service
 public class OptionService {
 
-    public Flux<OptionGroup> findByMenuId(String menuId) {
+    public Flux<OptionGroup> findByMenuId(UUID menuId) {
 
         // Option group 빵 길이
         OptionGroup optionGroup = new OptionGroup();
@@ -24,14 +22,8 @@ public class OptionService {
         optionGroup.setName("빵 길이");
         optionGroup.setType(OptionGroupType.SINGLE);
 
-        OptionGroupPolicy optionGroupPolicy = new OptionGroupPolicy();
-        optionGroupPolicy.setId(UUID.randomUUID());
-        optionGroupPolicy.setName("빵 길이");
-        Map<String, Object> policy = new HashMap<>();
-        policy.put("min", 1);
-        policy.put("max", 1);
-        optionGroupPolicy.setPolicy(policy);
-        optionGroup.setOptionGroupPolicy(optionGroupPolicy);
+        OptionPolicy policy= new OptionPolicy(1, 1);
+        optionGroup.setPolicy(policy);
 
         List<Option> options = new ArrayList<>();
         Option option1 = new Option();
@@ -51,16 +43,7 @@ public class OptionService {
         optionGroup1.setId(UUID.randomUUID());
         optionGroup1.setName("빵");
         optionGroup1.setType(OptionGroupType.SINGLE);
-
-        OptionGroupPolicy optionGroupPolicy1 = new OptionGroupPolicy();
-        optionGroupPolicy1.setId(UUID.randomUUID());
-        optionGroupPolicy1.setName("빵 선택");
-
-        Map<String, Object> policy1 = new HashMap<>();
-        policy1.put("min", 1);
-        policy1.put("max", 1);
-        optionGroupPolicy1.setPolicy(policy1);
-        optionGroup1.setOptionGroupPolicy(optionGroupPolicy1);
+        optionGroup1.setPolicy(policy);
 
         List<Option> options1 = new ArrayList<>();
         Option option3 = new Option();

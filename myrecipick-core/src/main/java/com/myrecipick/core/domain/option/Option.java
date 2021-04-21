@@ -10,7 +10,7 @@ public class Option {
     private String name;
     private String image;
 
-    private OptionPolicy optionPolicy;
+    private OptionPolicy policy;
 
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
@@ -24,7 +24,7 @@ public class Option {
         this.type = type;
         this.name = name;
         this.image = image;
-        this.optionPolicy = optionPolicy;
+        this.policy = optionPolicy;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
     }
@@ -61,12 +61,12 @@ public class Option {
         this.image = image;
     }
 
-    public OptionPolicy getOptionPolicy() {
-        return optionPolicy;
+    public OptionPolicy getPolicy() {
+        return policy;
     }
 
-    public void setOptionPolicy(OptionPolicy optionPolicy) {
-        this.optionPolicy = optionPolicy;
+    public void setPolicy(OptionPolicy policy) {
+        this.policy = policy;
     }
 
     public LocalDateTime getCreatedDate() {

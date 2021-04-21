@@ -8,6 +8,7 @@ import static org.springframework.web.reactive.function.server.ServerResponse.ok
 import com.myrecipick.api.route.option.dto.GetOptionGroupResponse;
 import com.myrecipick.api.service.option.OptionService;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import java.util.UUID;
 import java.util.function.Consumer;
 import org.springdoc.core.fn.builders.operation.Builder;
 import org.springframework.context.annotation.Bean;
@@ -32,7 +33,7 @@ public class OptionRoute {
 
     private HandlerFunction<ServerResponse> findByMenuId() {
         return req -> ok()
-            .body(optionService.findByMenuId(req.pathVariable("menuId"))
+            .body(optionService.findByMenuId(UUID.fromString(req.pathVariable("menuId")))
                 .collectList()
                 .map(GetOptionGroupResponse::ok), GetOptionGroupResponse.class);
     }
@@ -40,7 +41,7 @@ public class OptionRoute {
     private Consumer<Builder> findByMenuIdAPI() {
         return ops -> ops.tag("brand")
             .operationId("findByMenuId").summary("메뉴 옵션 조회 API").tags(new String[]{"옵션 API"})
-            .parameter(parameterBuilder().in(ParameterIn.PATH).name("menuId").description("메뉴 Id"))
+            .parameter(parameterBuilder().in(ParameterIn.PATH).example(UUID.randomUUID().toString()).name("menuId").description("메뉴 Id"))
             .response(responseBuilder().responseCode("200").implementation(GetOptionGroupResponse.class));
     }
 
