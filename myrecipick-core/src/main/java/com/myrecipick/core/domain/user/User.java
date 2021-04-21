@@ -13,7 +13,6 @@ import java.util.UUID;
 @Setter
 @DynamoDbBean
 public class User {
-
     private UUID id;
 
     @DynamoDbPartitionKey
@@ -26,4 +25,5 @@ public class User {
         this.id = id;
     }
 
+    public static String tableName = User.class.getSimpleName().toLowerCase();
 }

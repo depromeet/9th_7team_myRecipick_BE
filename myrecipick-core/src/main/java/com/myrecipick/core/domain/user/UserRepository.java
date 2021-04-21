@@ -12,9 +12,10 @@ public class UserRepository {
     private final DynamoDbEnhancedAsyncClient enhancedAsyncClient;
     private final DynamoDbAsyncTable<User> userDynamoDbAsyncTable;
 
+
     public UserRepository(DynamoDbEnhancedAsyncClient asyncClient) {
         enhancedAsyncClient = asyncClient;
-        userDynamoDbAsyncTable = enhancedAsyncClient.table("user", TableSchema.fromBean(User.class));
+        userDynamoDbAsyncTable = enhancedAsyncClient.table(User.tableName, TableSchema.fromBean(User.class));
     }
 
     public CompletableFuture<Void> save(User user) {
