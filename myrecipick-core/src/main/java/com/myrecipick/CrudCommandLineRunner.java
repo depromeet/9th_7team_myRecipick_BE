@@ -28,9 +28,9 @@ public class CrudCommandLineRunner implements CommandLineRunner {
         CompletableFuture<ListTablesResponse> listTablesResponseCompletableFuture = asyncClient.listTables();
         CompletableFuture<List<String>> listCompletableFuture = listTablesResponseCompletableFuture.thenApply(ListTablesResponse::tableNames);
         listCompletableFuture.thenAccept(tables -> {
-            if (null != tables && !tables.contains(User.class.getSimpleName())) {
-                DynamoDbAsyncTable<User> customer = enhancedAsyncClient.table(User.class.getSimpleName(), TableSchema.fromBean(User.class));
-                customer.createTable();
+            if (null != tables && !tables.contains("user")) {
+                DynamoDbAsyncTable<User> user = enhancedAsyncClient.table("user", TableSchema.fromBean(User.class));
+                user.createTable();
             }
         });
     }
