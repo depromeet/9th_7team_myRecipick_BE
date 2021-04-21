@@ -1,6 +1,6 @@
 package com.myrecipick;
 
-import com.myrecipick.domain.user.User;
+import com.myrecipick.core.domain.user.User;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbAsyncTable;

@@ -1,6 +1,6 @@
 package com.myrecipick.controller;
 
-import com.myrecipick.domain.user.User;
+import com.myrecipick.core.domain.user.User;
 import com.myrecipick.service.Result;
 import com.myrecipick.service.user.UserService;
 import org.springframework.web.bind.annotation.PostMapping;

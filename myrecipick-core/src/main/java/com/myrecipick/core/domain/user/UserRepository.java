@@ -1,4 +1,4 @@
-package com.myrecipick.domain.user;
+package com.myrecipick.core.domain.user;
 
 import org.springframework.stereotype.Repository;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbAsyncTable;

@@ -1,4 +1,4 @@
-package com.myrecipick.domain.user;
+package com.myrecipick.core.domain.user;
 
 import lombok.Getter;
 import lombok.Setter;
