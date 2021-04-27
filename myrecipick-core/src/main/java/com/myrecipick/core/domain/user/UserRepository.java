@@ -1,25 +1,28 @@
 package com.myrecipick.core.domain.user;
 
 import org.springframework.stereotype.Repository;
-import software.amazon.awssdk.enhanced.dynamodb.DynamoDbAsyncTable;
-import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedAsyncClient;
-import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
-
-import java.util.concurrent.CompletableFuture;
+import reactor.core.publisher.Mono;
+import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient;
+import software.amazon.awssdk.services.dynamodb.model.PutItemRequest;
+import software.amazon.awssdk.services.dynamodb.model.PutItemResponse;
 
 @Repository
 public class UserRepository {
-    private final DynamoDbEnhancedAsyncClient enhancedAsyncClient;
-    private final DynamoDbAsyncTable<User> userDynamoDbAsyncTable;
+    private final DynamoDbAsyncClient dynamoDbAsyncClient;
 
-
-    public UserRepository(DynamoDbEnhancedAsyncClient asyncClient) {
-        enhancedAsyncClient = asyncClient;
-        userDynamoDbAsyncTable = enhancedAsyncClient.table(User.tableName, TableSchema.fromBean(User.class));
+    public UserRepository(DynamoDbAsyncClient dynamoDbAsyncClient) {
+        this.dynamoDbAsyncClient = dynamoDbAsyncClient;
     }
 
-    public CompletableFuture<Void> save(User user) {
-        return userDynamoDbAsyncTable.putItem(user);
+    public Mono<User> save(User user) {
+        PutItemRequest putItemRequest = PutItemRequest.builder()
+            .tableName("user")
+            .item(UserMapper.toMap(user))
+            .build();
+
+        return Mono.fromCompletionStage(dynamoDbAsyncClient.putItem(putItemRequest))
+            .map(PutItemResponse::attributes)
+            .map(attributeValueMap -> user);
     }
 
 }

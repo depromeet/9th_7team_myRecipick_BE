@@ -1,9 +1,7 @@
-package com.myrecipick.service.user;
+package com.myrecipick.api.service.user;
 
 import com.myrecipick.core.domain.user.User;
 import com.myrecipick.core.domain.user.UserRepository;
-import com.myrecipick.service.Result;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
@@ -16,9 +14,8 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public Mono<Result<User>> createUser(User user) {
+    public Mono<User> createUser(User user) {
         userRepository.save(user);
-        Result<User> result = Result.of(HttpStatus.CREATED, "유저 등록 성공", user);
-        return Mono.just(result);
+        return Mono.just(user);
     }
 }
