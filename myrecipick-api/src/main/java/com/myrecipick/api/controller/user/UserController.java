@@ -1,4 +1,4 @@
-package com.myrecipick.controller;
+package com.myrecipick.api.controller.user;
 
 import com.myrecipick.api.route.ServiceResponse;
 import com.myrecipick.api.service.user.UserService;

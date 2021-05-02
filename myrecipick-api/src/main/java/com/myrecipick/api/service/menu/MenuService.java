@@ -1,16 +1,18 @@
 package com.myrecipick.api.service.menu;
 
 import com.myrecipick.core.domain.menu.Menu;
-import java.time.LocalDateTime;
-import java.util.UUID;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 @Service
 public class MenuService {
 
-    public MenuService() {}
+    public MenuService() {
+    }
 
     public Flux<Menu> findAllByBrandId(UUID brandId) {
         Menu menu1 = new Menu();
@@ -42,7 +44,6 @@ public class MenuService {
 
         return Flux.just(menu1, menu2, menu3);
     }
-
 
     public Mono<Menu> findById(UUID menuId) {
 

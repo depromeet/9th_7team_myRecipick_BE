@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.myrecipick.api.route.ServiceResponse;
 import com.myrecipick.core.domain.menu.Menu;
-import com.myrecipick.core.domain.option.OptionGroup;
-import java.util.List;
 import org.springframework.http.HttpStatus;
+
+import java.util.List;
 
 @JsonInclude(Include.NON_NULL)
 public class GetMenusResponse extends ServiceResponse {
@@ -18,7 +18,7 @@ public class GetMenusResponse extends ServiceResponse {
     }
 
     public GetMenusResponse(HttpStatus status, String message,
-        List<Menu> data) {
+                            List<Menu> data) {
         super(status, message);
         this.data = data;
     }
