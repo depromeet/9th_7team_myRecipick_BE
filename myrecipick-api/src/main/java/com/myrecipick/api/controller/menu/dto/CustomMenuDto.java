@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.UUID;
 
 @Data
-public class MenuDto {
+public class CustomMenuDto {
     private UUID id;
     private UUID brandId;
     private String name;
@@ -14,7 +14,7 @@ public class MenuDto {
     private String logoImage;
     private Boolean isShow;
 
-    public MenuDto(Menu menu) {
+    public CustomMenuDto(Menu menu) {
         id = menu.getId();
         brandId = menu.getBrandId();
         name = menu.getName();

@@ -1,12 +1,10 @@
 package com.myrecipick.api.controller.menu;
 
-import com.myrecipick.api.controller.menu.dto.GetMenuListResponse;
+import com.myrecipick.api.controller.menu.dto.GetCustomMenuListResponse;
+import com.myrecipick.api.controller.menu.dto.GetCustomMenuResponse;
 import com.myrecipick.api.route.ServiceResponse;
-import com.myrecipick.api.service.menu.MenuService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.myrecipick.api.service.menu.CustomMenuService;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 import java.util.UUID;
@@ -14,16 +12,22 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/v1")
 public class CustomMenuController {
-    private final MenuService menuService;
+    private final CustomMenuService customMenuService;
 
-    public CustomMenuController(MenuService menuService) {
-        this.menuService = menuService;
+    public CustomMenuController(CustomMenuService customMenuService) {
+        this.customMenuService = customMenuService;
     }
 
-    @GetMapping("/menus")
+    @GetMapping("/customMenu")
     public Mono<ServiceResponse> findAllByUserId(@RequestHeader UUID userId) {
-        return menuService.findAllByUserId(userId)
+        return customMenuService.findAllByUserId(userId)
             .collectList()
-            .map(GetMenuListResponse::ok);
+            .map(GetCustomMenuListResponse::ok);
+    }
+
+    @GetMapping("/customMenu/{customMenuId}")
+    public Mono<ServiceResponse> findByUserId(@PathVariable UUID customMenuId) {
+        return customMenuService.findById(customMenuId)
+            .map(GetCustomMenuResponse::ok);
     }
 }
