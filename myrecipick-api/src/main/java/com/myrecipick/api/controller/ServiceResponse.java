@@ -1,4 +1,4 @@
-package com.myrecipick.api.route;
+package com.myrecipick.api.controller;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
