@@ -2,7 +2,7 @@ package com.myrecipick.api.controller.menu;
 
 import com.myrecipick.api.controller.menu.dto.GetCustomMenuListResponse;
 import com.myrecipick.api.controller.menu.dto.GetCustomMenuResponse;
-import com.myrecipick.api.route.ServiceResponse;
+import com.myrecipick.api.controller.ServiceResponse;
 import com.myrecipick.api.service.menu.CustomMenuService;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;

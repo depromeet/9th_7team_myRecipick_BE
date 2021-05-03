@@ -1,8 +1,8 @@
-package com.myrecipick.api.route.brand.dto;
+package com.myrecipick.api.controller.brand.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.myrecipick.api.route.ServiceResponse;
+import com.myrecipick.api.controller.ServiceResponse;
 import com.myrecipick.core.domain.brand.Brand;
 import java.util.List;
 import org.springframework.http.HttpStatus;

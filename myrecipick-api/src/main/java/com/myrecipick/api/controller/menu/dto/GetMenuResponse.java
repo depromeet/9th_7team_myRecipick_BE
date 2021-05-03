@@ -1,11 +1,9 @@
-package com.myrecipick.api.route.menu.dto;
+package com.myrecipick.api.controller.menu.dto.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.myrecipick.api.route.ServiceResponse;
+import com.myrecipick.api.controller.ServiceResponse;
 import com.myrecipick.core.domain.menu.Menu;
-import com.myrecipick.core.domain.option.OptionGroup;
-import java.util.List;
 import org.springframework.http.HttpStatus;
 
 @JsonInclude(Include.NON_NULL)

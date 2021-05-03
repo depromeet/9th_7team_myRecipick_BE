@@ -1,6 +1,6 @@
 package com.myrecipick.api.controller.user;
 
-import com.myrecipick.api.route.ServiceResponse;
+import com.myrecipick.api.controller.ServiceResponse;
 import com.myrecipick.api.service.user.UserService;
 import com.myrecipick.core.domain.user.User;
 import org.springframework.http.HttpStatus;
