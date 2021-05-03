@@ -1,6 +1,6 @@
 package com.myrecipick.api.service.menu;
 
-import com.myrecipick.core.domain.menu.CustomMenu;
+import com.myrecipick.core.my.menu.CustomMenu;
 import com.myrecipick.core.domain.menu.Menu;
 import com.myrecipick.core.domain.option.*;
 import org.springframework.stereotype.Service;
