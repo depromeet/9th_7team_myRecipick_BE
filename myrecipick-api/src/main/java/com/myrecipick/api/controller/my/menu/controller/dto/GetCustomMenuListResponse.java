@@ -1,4 +1,4 @@
-package com.myrecipick.api.controller.menu.dto;
+package com.myrecipick.api.controller.my.menu.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;

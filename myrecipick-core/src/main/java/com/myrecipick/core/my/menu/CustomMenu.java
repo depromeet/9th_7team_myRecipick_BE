@@ -1,4 +1,4 @@
-package com.myrecipick.core.domain.menu;
+package com.myrecipick.core.my.menu;
 
 import com.myrecipick.core.domain.option.OptionGroup;
 
