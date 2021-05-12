@@ -10,11 +10,8 @@ public class OptionGroup {
     private OptionGroupType type;
     private String name;
     private String image;
-
     private List<Option> options;
-
     private OptionPolicy policy;
-
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 

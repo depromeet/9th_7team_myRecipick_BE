@@ -1,7 +1,6 @@
 package com.myrecipick.core.my.menu;
 
 import com.myrecipick.core.domain.option.OptionGroup;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;

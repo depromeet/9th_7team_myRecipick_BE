@@ -8,7 +8,7 @@ public class Menu {
     private UUID id;
     private UUID brandId;
     private String name;
-    private String logoImage;
+    private String image;
     private Boolean isShow;
 
     private LocalDateTime createdDate;
@@ -41,12 +41,12 @@ public class Menu {
         this.name = name;
     }
 
-    public String getLogoImage() {
-        return logoImage;
+    public String getImage() {
+        return image;
     }
 
-    public void setLogoImage(String logoImage) {
-        this.logoImage = logoImage;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Boolean getIsShow() {
