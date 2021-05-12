@@ -69,7 +69,6 @@ public class CustomMenuService {
 
         List<Option> options = optionNames.stream().map(name -> {
             Option option = new Option();
-            option.setId(UUID.randomUUID());
             option.setName(name);
             option.setType(OptionType.SELECT);
             return option;

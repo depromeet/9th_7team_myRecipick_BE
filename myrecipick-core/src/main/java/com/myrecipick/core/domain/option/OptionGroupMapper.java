@@ -21,6 +21,7 @@ public class OptionGroupMapper {
         optionGroup.setName(attributeValueMap.get("name").s());
         optionGroup.setType(OptionGroupType.valueOf(attributeValueMap.get("type").s()));
         optionGroup.setImage(attributeValueMap.get("image").s());
+        optionGroup.setOptions(OptionMapper.fromList(attributeValueMap.get("options").l()));
         optionGroup.setPolicy(OptionPolicy.of(attributeValueMap.get("policy").m()));
         optionGroup.setCreatedDate(LocalDateTime.parse(attributeValueMap.get("createdDate").s()));
         optionGroup.setUpdatedDate(LocalDateTime.parse(attributeValueMap.get("updatedDate").s()));
