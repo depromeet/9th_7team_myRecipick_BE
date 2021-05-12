@@ -1,9 +1,8 @@
 package com.myrecipick.core.domain.user;
 
-import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
-
 import java.util.Map;
 import java.util.UUID;
+import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 
 public class UserMapper {
     private UserMapper() {

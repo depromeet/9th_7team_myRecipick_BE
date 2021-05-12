@@ -9,9 +9,7 @@ public class Option {
     private OptionType type;
     private String name;
     private String image;
-
     private OptionPolicy policy;
-
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 

@@ -1,9 +1,8 @@
 package com.myrecipick.api.controller.my.menu.controller.dto;
 
 import com.myrecipick.core.domain.menu.Menu;
-import lombok.Data;
-
 import java.util.UUID;
+import lombok.Data;
 
 @Data
 public class CustomMenuDto {

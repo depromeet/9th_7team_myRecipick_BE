@@ -1,6 +1,5 @@
 package com.myrecipick.core.domain.menu;
 
-import com.myrecipick.core.domain.brand.Brand;
 import java.util.Map;
 import java.util.UUID;
 import org.springframework.stereotype.Repository;
