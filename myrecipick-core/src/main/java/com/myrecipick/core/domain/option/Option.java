@@ -5,6 +5,7 @@ public class Option {
     private OptionType type;
     private String name;
     private String image;
+    private int order;
 
     public Option() {
     }
@@ -37,5 +38,13 @@ public class Option {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
     }
 }

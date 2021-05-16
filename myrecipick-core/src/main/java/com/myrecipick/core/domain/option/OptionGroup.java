@@ -6,10 +6,13 @@ import java.util.UUID;
 
 public class OptionGroup {
 
+    public static OptionGroup EMPTY = new OptionGroup();
+
     private UUID id;
     private OptionGroupType type;
     private String name;
     private String image;
+    private int order;
     private List<Option> options;
     private OptionPolicy policy;
     private LocalDateTime createdDate;
@@ -60,6 +63,14 @@ public class OptionGroup {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
     }
 
     public List<Option> getOptions() {

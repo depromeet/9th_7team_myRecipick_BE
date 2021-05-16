@@ -1,5 +1,6 @@
 package com.myrecipick.core.domain.option;
 
+import java.util.Comparator;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -12,10 +13,7 @@ import software.amazon.awssdk.services.dynamodb.model.GetItemResponse;
 
 @Repository
 public class OptionGroupBlockRepository {
-
-
-    public static final String MENU_OPTION_GROUPS_TABLE = "menu_option_groups";
-    public static final String OPTION_GROUPS_TABLE = "option_groups";
+    private static final String OPTION_GROUPS_TABLE = "option_groups";
 
     private final DynamoDbAsyncClient dynamoDbAsyncClient;
 
