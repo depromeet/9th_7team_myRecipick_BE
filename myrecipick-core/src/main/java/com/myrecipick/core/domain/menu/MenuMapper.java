@@ -1,6 +1,7 @@
 package com.myrecipick.core.domain.menu;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -9,12 +10,15 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 
 public class MenuMapper {
 
+    private static final Comparator<Integer> comp = Integer::compare;
+
     private MenuMapper() {
     }
 
     public static List<Menu> fromList(List<Map<String, AttributeValue>> items) {
         return items.stream()
             .map(MenuMapper::fromMap)
+            .sorted((item1, item2) -> comp.compare(item1.getOrder(), item2.getOrder()))
             .collect(Collectors.toList());
     }
 
@@ -24,6 +28,7 @@ public class MenuMapper {
         menu.setName(attributeValueMap.get("name").s());
         menu.setImage(attributeValueMap.get("image").s());
         menu.setIsShow(attributeValueMap.get("isShow").bool());
+        menu.setOrder(Integer.parseInt(attributeValueMap.get("order").n()));
         menu.setCreatedDate(LocalDateTime.parse(attributeValueMap.get("createdDate").s()));
         menu.setUpdatedDate(LocalDateTime.parse(attributeValueMap.get("updatedDate").s()));
         menu.setSubCategoryId(UUID.fromString(attributeValueMap.get("subCategoryId").s()));

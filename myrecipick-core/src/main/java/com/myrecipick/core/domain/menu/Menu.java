@@ -10,6 +10,7 @@ public class Menu {
     private String name;
     private String image;
     private Boolean isShow;
+    private int order;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
@@ -57,6 +58,14 @@ public class Menu {
 
     public void setIsShow(Boolean show) {
         isShow = show;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
     }
 
     public LocalDateTime getCreatedDate() {
