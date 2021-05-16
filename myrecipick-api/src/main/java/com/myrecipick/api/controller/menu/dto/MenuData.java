@@ -1,22 +1,32 @@
-package com.myrecipick.core.domain.menu;
+package com.myrecipick.api.controller.menu.dto;
 
+import com.myrecipick.core.domain.menu.Menu;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class Menu {
+public class MenuData {
 
     private UUID id;
     private UUID brandId;
     private String name;
     private String image;
-    private Boolean isShow;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
-    private UUID subCategoryId;
-    private String subCategoryName;
+    public MenuData() {
+    }
 
-    public Menu() {
+    public static MenuData toData(Menu item) {
+        MenuData menuData = new MenuData();
+
+        menuData.setId(item.getId());
+        menuData.setBrandId(item.getBrandId());
+        menuData.setName(item.getName());
+        menuData.setImage(item.getImage());
+        menuData.setCreatedDate(item.getCreatedDate());
+        menuData.setUpdatedDate(item.getUpdatedDate());
+
+        return menuData;
     }
 
     public UUID getId() {
@@ -51,14 +61,6 @@ public class Menu {
         this.image = image;
     }
 
-    public Boolean getIsShow() {
-        return isShow;
-    }
-
-    public void setIsShow(Boolean show) {
-        isShow = show;
-    }
-
     public LocalDateTime getCreatedDate() {
         return createdDate;
     }
@@ -73,25 +75,5 @@ public class Menu {
 
     public void setUpdatedDate(LocalDateTime updatedDate) {
         this.updatedDate = updatedDate;
-    }
-
-    public UUID getSubCategoryId() {
-        return subCategoryId;
-    }
-
-    public void setSubCategoryId(UUID subCategoryId) {
-        this.subCategoryId = subCategoryId;
-    }
-
-    public String getSubCategoryName() {
-        return subCategoryName;
-    }
-
-    public void setSubCategoryName(String subCategoryName) {
-        this.subCategoryName = subCategoryName;
-    }
-
-    public boolean isSameSubCategoryId(UUID subCategoryId) {
-        return this.subCategoryId.equals(subCategoryId);
     }
 }

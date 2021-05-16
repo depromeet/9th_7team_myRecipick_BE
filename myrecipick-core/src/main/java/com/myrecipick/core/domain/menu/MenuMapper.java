@@ -26,6 +26,8 @@ public class MenuMapper {
         menu.setIsShow(attributeValueMap.get("isShow").bool());
         menu.setCreatedDate(LocalDateTime.parse(attributeValueMap.get("createdDate").s()));
         menu.setUpdatedDate(LocalDateTime.parse(attributeValueMap.get("updatedDate").s()));
+        menu.setSubCategoryId(UUID.fromString(attributeValueMap.get("subCategoryId").s()));
+        menu.setSubCategoryName(attributeValueMap.get("subCategoryName").s());
         return menu;
     }
 

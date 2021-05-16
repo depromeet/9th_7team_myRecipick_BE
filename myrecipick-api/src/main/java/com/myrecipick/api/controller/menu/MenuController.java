@@ -1,7 +1,9 @@
 package com.myrecipick.api.controller.menu;
 
-import com.myrecipick.api.controller.menu.dto.dto.GetMenuResponse;
-import com.myrecipick.api.controller.menu.dto.dto.GetMenusResponse;
+import com.myrecipick.api.controller.menu.dto.GetMenuResponse;
+import com.myrecipick.api.controller.menu.dto.GetMenusResponse;
+import com.myrecipick.api.controller.menu.dto.MenuData;
+import com.myrecipick.api.controller.menu.dto.SubCategoryData;
 import com.myrecipick.api.service.menu.MenuService;
 import java.util.UUID;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,12 +25,14 @@ public class MenuController {
     public Mono<GetMenusResponse> getMenus(@PathVariable("brandId") UUID brandId) {
         return menuService.findAllByBrandId(brandId)
             .collectList()
+            .map(SubCategoryData::toData)
             .map(GetMenusResponse::ok);
     }
 
     @GetMapping("/v1/menus/{menuId}")
     public Mono<GetMenuResponse> getMenu(@PathVariable("menuId") UUID menuId) {
         return menuService.findById(menuId)
+            .map(MenuData::toData)
             .map(GetMenuResponse::ok);
     }
 }
