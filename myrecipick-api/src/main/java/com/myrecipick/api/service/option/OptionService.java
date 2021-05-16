@@ -28,7 +28,12 @@ public class OptionService {
     public Flux<OptionGroup> findByMenuId(UUID menuId) {
         List<MenuOptionGroup> menuOptionGroups = menuOptionGroupBlockRepository.findByMenuId(menuId);
         List<OptionGroup> collect = menuOptionGroups.stream()
-            .map(item -> optionGroupBlockRepository.findById(item.getOptionGroupId()))
+            .flatMap(item -> {
+                List<UUID> optionGroupIds = item.getOptionGroupIds();
+
+                return optionGroupIds.stream()
+                    .map(optionGroupBlockRepository::findById);
+            })
             .filter(item -> item != OptionGroup.EMPTY)
             .sorted((item1, item2) -> comp.compare(item1.getOrder(), item2.getOrder()))
             .collect(Collectors.toList());

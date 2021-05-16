@@ -1,20 +1,21 @@
 package com.myrecipick.core.domain.option;
 
+import java.util.List;
 import java.util.UUID;
 
 public class MenuOptionGroup {
 
     private UUID id;
     private UUID menuId;
-    private UUID optionGroupId;
+    private List<UUID> optionGroupIds;
 
     public MenuOptionGroup() {
     }
 
-    public MenuOptionGroup(UUID id, UUID menuId, UUID optionGroupId) {
+    public MenuOptionGroup(UUID id, UUID menuId, List<UUID> optionGroupIds) {
         this.id = id;
         this.menuId = menuId;
-        this.optionGroupId = optionGroupId;
+        this.optionGroupIds = optionGroupIds;
     }
 
     public UUID getId() {
@@ -33,11 +34,11 @@ public class MenuOptionGroup {
         this.menuId = menuId;
     }
 
-    public UUID getOptionGroupId() {
-        return optionGroupId;
+    public List<UUID> getOptionGroupIds() {
+        return optionGroupIds;
     }
 
-    public void setOptionGroupId(UUID optionGroupId) {
-        this.optionGroupId = optionGroupId;
+    public void setOptionGroupIds(List<UUID> optionGroupIds) {
+        this.optionGroupIds = optionGroupIds;
     }
 }

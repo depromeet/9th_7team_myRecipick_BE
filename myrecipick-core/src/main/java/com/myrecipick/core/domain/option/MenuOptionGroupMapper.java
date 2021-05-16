@@ -21,8 +21,16 @@ public class MenuOptionGroupMapper {
         MenuOptionGroup menuOptionGroup = new MenuOptionGroup();
         menuOptionGroup.setId(UUID.fromString(attributeValueMap.get("id").s()));
         menuOptionGroup.setMenuId(UUID.fromString(attributeValueMap.get("menuId").s()));
-        menuOptionGroup.setOptionGroupId(UUID.fromString(attributeValueMap.get("optionGroupId").s()));
+        menuOptionGroup.setOptionGroupIds(getOptionGroupIds(attributeValueMap));
 
         return menuOptionGroup;
+    }
+
+    private static List<UUID> getOptionGroupIds(Map<String, AttributeValue> attributeValueMap) {
+        List<AttributeValue> optionGroupIds = attributeValueMap.get("optionGroupIds").l();
+        return optionGroupIds.stream()
+            .map(AttributeValue::s)
+            .map(UUID::fromString)
+            .collect(Collectors.toList());
     }
 }
