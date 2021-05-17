@@ -1,6 +1,7 @@
 package com.myrecipick.core.domain.customMenu;
 
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient;
 import software.amazon.awssdk.services.dynamodb.model.*;
@@ -43,6 +44,33 @@ public class CustomMenuRepository {
         } catch (InterruptedException | ExecutionException e) {
             throw new RuntimeException();
         }
+    }
+
+    public Flux<CustomMenu> findAllByUserId(UUID userId) {
+        Map<String, Condition> filter = Map.of(
+            "isShow", Condition.builder()
+                .comparisonOperator(ComparisonOperator.EQ)
+                .attributeValueList(AttributeValue.builder()
+                    .bool(true)
+                    .build())
+                .build(),
+            "userId", Condition.builder()
+                .comparisonOperator(ComparisonOperator.EQ)
+                .attributeValueList(AttributeValue.builder()
+                    .s(userId.toString())
+                    .build())
+                .build());
+
+
+        ScanRequest scanRequest = ScanRequest.builder()
+            .tableName(CUSTOM_MENU_TABLE)
+            .scanFilter(filter)
+            .build();
+
+        return Mono.fromCompletionStage(dynamoDbAsyncClient.scan(scanRequest))
+            .map(ScanResponse::items)
+            .map(CustomMenuMapper::fromList)
+            .flatMapMany(Flux::fromIterable);
     }
 
 }

@@ -4,12 +4,20 @@ import com.myrecipick.core.domain.option.OptionGroupMapper;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class CustomMenuMapper {
     private CustomMenuMapper() {
+    }
+
+    public static List<CustomMenu> fromList(List<Map<String, AttributeValue>> items) {
+        return items.stream()
+            .map(CustomMenuMapper::fromMap)
+            .collect(Collectors.toList());
     }
 
     public static CustomMenu fromMap(Map<String, AttributeValue> attributeValueMap) {
