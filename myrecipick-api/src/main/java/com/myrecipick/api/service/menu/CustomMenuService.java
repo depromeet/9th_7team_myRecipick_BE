@@ -1,24 +1,25 @@
 package com.myrecipick.api.service.menu;
 
+import com.myrecipick.core.domain.customMenu.CustomMenuRepository;
 import com.myrecipick.core.domain.menu.Menu;
-import com.myrecipick.core.domain.option.Option;
-import com.myrecipick.core.domain.option.OptionGroup;
-import com.myrecipick.core.domain.option.OptionGroupType;
-import com.myrecipick.core.domain.option.OptionPolicy;
-import com.myrecipick.core.domain.option.OptionType;
+import com.myrecipick.core.domain.option.*;
 import com.myrecipick.core.my.menu.CustomMenu;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
 @Service
 public class CustomMenuService {
 
-    public CustomMenuService() {
+    private final CustomMenuRepository customMenuRepository;
+
+    public CustomMenuService(CustomMenuRepository customMenuRepository) {
+        this.customMenuRepository = customMenuRepository;
     }
 
     public Flux<Menu> findAllByUserId(UUID userId) {
