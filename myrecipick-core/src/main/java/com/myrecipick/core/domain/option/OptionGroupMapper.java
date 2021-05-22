@@ -1,13 +1,12 @@
 package com.myrecipick.core.domain.option;
 
-import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
-
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 
 public class OptionGroupMapper {
     private static final Comparator<Integer> comp = Integer::compare;

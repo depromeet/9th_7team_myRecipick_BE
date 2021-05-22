@@ -1,6 +1,5 @@
 package com.myrecipick.core.domain.option;
 
-import java.util.Comparator;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;

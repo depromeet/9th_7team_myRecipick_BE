@@ -8,6 +8,9 @@ public class MyMenu {
     private String name;
     private String image;
 
+    public MyMenu() {
+    }
+
     public static Builder builder() {
         return new Builder();
     }
@@ -23,7 +26,6 @@ public class MyMenu {
     public String getImage() {
         return image;
     }
-
 
     public static final class Builder {
 

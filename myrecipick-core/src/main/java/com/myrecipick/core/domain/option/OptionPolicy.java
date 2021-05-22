@@ -7,19 +7,22 @@ public class OptionPolicy {
 
     private int min;
     private int max;
+    private boolean canCheckAll;
 
     public OptionPolicy() {
     }
 
-    public OptionPolicy(int min, int max) {
+    public OptionPolicy(int min, int max, boolean canCheckAll) {
         this.min = min;
         this.max = max;
+        this.canCheckAll = canCheckAll;
     }
 
     public static OptionPolicy of(Map<String, AttributeValue> policy) {
         OptionPolicy optionPolicy = new OptionPolicy();
-        optionPolicy.setMin(Integer.parseInt(policy.get("min").s()));
-        optionPolicy.setMax(Integer.parseInt(policy.get("max").s()));
+        optionPolicy.min = Integer.parseInt(policy.get("min").s());
+        optionPolicy.max = Integer.parseInt(policy.get("max").s());
+        optionPolicy.canCheckAll = policy.get("canCheckAll").bool();
 
         return optionPolicy;
     }
@@ -40,4 +43,7 @@ public class OptionPolicy {
         this.max = max;
     }
 
+    public boolean isCanCheckAll() {
+        return canCheckAll;
+    }
 }
