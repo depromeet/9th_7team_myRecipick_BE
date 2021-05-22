@@ -2,8 +2,6 @@ package com.myrecipick.core.domain.my;
 
 import java.util.Map;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -38,36 +36,25 @@ public class MyCustomMenuRepository {
             .map(attributeValueMap -> customMenu);
     }
 
-    public MyCustomMenu findById(UUID customMenuId) {
+    public Mono<MyCustomMenu> findById(UUID customMenuId) {
         GetItemRequest getItemRequest = GetItemRequest.builder()
             .tableName(CUSTOM_MENU_TABLE)
             .key(Map.of("id", AttributeValue.builder().s(customMenuId.toString()).build()))
             .build();
 
-        CompletableFuture<GetItemResponse> item = dynamoDbAsyncClient.getItem(getItemRequest);
-
-        try {
-            return MyCustomMenuMapper.fromMap(item.get().item());
-        } catch (InterruptedException | ExecutionException e) {
-            throw new RuntimeException();
-        }
+        return Mono.fromCompletionStage(dynamoDbAsyncClient.getItem(getItemRequest))
+            .map(GetItemResponse::item)
+            .map(MyCustomMenuMapper::fromMap);
     }
 
     public Flux<MyCustomMenu> findAllByUserId(UUID userId) {
         Map<String, Condition> filter = Map.of(
-            "isShow", Condition.builder()
-                .comparisonOperator(ComparisonOperator.EQ)
-                .attributeValueList(AttributeValue.builder()
-                    .bool(true)
-                    .build())
-                .build(),
             "userId", Condition.builder()
                 .comparisonOperator(ComparisonOperator.EQ)
                 .attributeValueList(AttributeValue.builder()
                     .s(userId.toString())
                     .build())
                 .build());
-
 
         ScanRequest scanRequest = ScanRequest.builder()
             .tableName(CUSTOM_MENU_TABLE)

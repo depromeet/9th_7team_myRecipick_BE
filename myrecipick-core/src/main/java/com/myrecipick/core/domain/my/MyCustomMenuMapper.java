@@ -23,6 +23,13 @@ public class MyCustomMenuMapper {
         menu.setId(UUID.fromString(attributeValueMap.get("id").s()));
         menu.setUserId(UUID.fromString(attributeValueMap.get("userId").s()));
         menu.setName(attributeValueMap.get("name").s());
+
+        MyMenu myMenu = getMyMenu(attributeValueMap.get("menu").m());
+        menu.setMenu(myMenu);
+
+        List<MyOptionGroup> myOptionGroup = getMyOptionGroup(attributeValueMap.get("optionGroups").l());
+        menu.setOptionGroups(myOptionGroup);
+
         menu.setCreatedDate(LocalDateTime.parse(attributeValueMap.get("createdDate").s()));
         menu.setUpdatedDate(LocalDateTime.parse(attributeValueMap.get("updatedDate").s()));
         return menu;
@@ -37,4 +44,34 @@ public class MyCustomMenuMapper {
             "updatedDate", AttributeValue.builder().s(customMenu.getUpdatedDate().toString()).build()
         );
     }
+
+    private static MyMenu getMyMenu(Map<String, AttributeValue> menu) {
+        return MyMenu.builder()
+            .id(UUID.fromString(menu.get("id").s()))
+            .name(menu.get("name").s())
+            .image(menu.get("image").s()).build();
+    }
+
+    private static List<MyOptionGroup> getMyOptionGroup(List<AttributeValue> optionGroups) {
+        return optionGroups.stream()
+            .map(AttributeValue::m)
+            .map(attribute -> MyOptionGroup.builder()
+                .id(UUID.fromString(attribute.get("id").s()))
+                .name(attribute.get("name").s())
+                .options(getOptions(attribute.get("options").l()))
+                .build())
+            .collect(Collectors.toList());
+    }
+
+    private static List<MyOption> getOptions(List<AttributeValue> options) {
+        return options.stream()
+            .map(AttributeValue::m)
+            .map(attribute -> MyOption.builder()
+                .name(attribute.get("name").s())
+                .image(attribute.get("image").s())
+                .build())
+            .collect(Collectors.toList());
+
+    }
+
 }

@@ -16,8 +16,8 @@ public class CustomMenuDto {
     public CustomMenuDto(MyCustomMenu menu) {
         id = menu.getId();
         name = menu.getName();
-        image = menu.getMenu().getImage();
-        description = "참깨빵 위에 순쇠고기 패티두장 특별한 소스 양상추 치즈 피클 양파까지";
+        image = menu.getMenuImage();
+        description = menu.createDescription();
         createdDate = menu.getCreatedDate();
     }
 }
