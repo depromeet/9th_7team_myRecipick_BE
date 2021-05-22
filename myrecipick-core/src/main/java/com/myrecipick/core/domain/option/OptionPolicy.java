@@ -1,7 +1,6 @@
 package com.myrecipick.core.domain.option;
 
 import java.util.Map;
-import java.util.UUID;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 
 public class OptionPolicy {
@@ -41,10 +40,4 @@ public class OptionPolicy {
         this.max = max;
     }
 
-    public static void main(String args[]) {
-        for(int i = 0; i < 400; i++) {
-            System.out.println(UUID.randomUUID());
-        }
-    }
 }
-

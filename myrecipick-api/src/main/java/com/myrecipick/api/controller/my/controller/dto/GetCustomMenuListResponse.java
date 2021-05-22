@@ -1,9 +1,11 @@
-package com.myrecipick.api.controller.my.menu.controller.dto;
+package com.myrecipick.api.controller.my.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.myrecipick.api.controller.ServiceResponse;
 import com.myrecipick.core.domain.menu.Menu;
+import com.myrecipick.core.domain.my.MyCustomMenu;
+import com.myrecipick.core.domain.my.MyMenu;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.http.HttpStatus;
@@ -18,7 +20,7 @@ public class GetCustomMenuListResponse extends ServiceResponse {
 
     }
 
-    public static GetCustomMenuListResponse ok(List<Menu> menus) {
+    public static GetCustomMenuListResponse ok(List<MyCustomMenu> menus) {
         GetCustomMenuListResponse getCustomMenuListResponse = new GetCustomMenuListResponse();
         getCustomMenuListResponse.status = HttpStatus.OK;
         getCustomMenuListResponse.data = menus.stream()
