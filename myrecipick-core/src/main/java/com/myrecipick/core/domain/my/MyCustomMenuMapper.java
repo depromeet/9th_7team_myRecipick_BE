@@ -40,9 +40,44 @@ public class MyCustomMenuMapper {
             "id", AttributeValue.builder().s(customMenu.getId().toString()).build(),
             "userId", AttributeValue.builder().s(customMenu.getUserId().toString()).build(),
             "name", AttributeValue.builder().s(customMenu.getName()).build(),
+            "menu", AttributeValue.builder().m(makeMenu(customMenu.getMenu())).build(),
+            "optionGroups", AttributeValue.builder().l(makeOptionGroups(customMenu.getOptionGroups())).build(),
             "createdDate", AttributeValue.builder().s(customMenu.getCreatedDate().toString()).build(),
             "updatedDate", AttributeValue.builder().s(customMenu.getUpdatedDate().toString()).build()
         );
+    }
+
+    private static Map<String, AttributeValue> makeMenu(MyMenu menu) {
+        return Map.of(
+            "id", AttributeValue.builder().s(menu.getId().toString()).build(),
+            "name", AttributeValue.builder().s(menu.getName()).build(),
+            "image",AttributeValue.builder().s(menu.getImage()).build()
+        );
+    }
+
+    private static List<AttributeValue> makeOptionGroups(List<MyOptionGroup> optionGroups) {
+        return optionGroups.stream()
+            .map(optionGroup -> AttributeValue.builder().m(
+                Map.of(
+                    "id", AttributeValue.builder().s(optionGroup.getId().toString()).build(),
+                    "name", AttributeValue.builder().s(optionGroup.getName()).build(),
+                    "options",AttributeValue.builder().l(
+                        makeOptions(optionGroup.getOptions())
+                    ).build()
+                )
+            ).build())
+            .collect(Collectors.toList());
+    }
+
+    private static List<AttributeValue> makeOptions(List<MyOption> options) {
+        return options.stream()
+            .map(option -> AttributeValue.builder().m(
+                Map.of(
+                    "name", AttributeValue.builder().s(option.getName()).build(),
+                    "image",AttributeValue.builder().s(option.getImage()).build()
+                )
+            ).build())
+            .collect(Collectors.toList());
     }
 
     private static MyMenu getMyMenu(Map<String, AttributeValue> menu) {

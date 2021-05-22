@@ -1,12 +1,16 @@
 package com.myrecipick.api.controller.my.controller;
 
 import com.myrecipick.api.controller.ServiceResponse;
+import com.myrecipick.api.controller.my.controller.dto.CreateMyCustomMenuRequest;
+import com.myrecipick.api.controller.my.controller.dto.CreateMyCustomMenuResponse;
 import com.myrecipick.api.controller.my.controller.dto.GetCustomMenuListResponse;
 import com.myrecipick.api.controller.my.controller.dto.GetCustomMenuResponse;
 import com.myrecipick.api.service.my.MyCustomMenuService;
 import java.util.UUID;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,4 +37,13 @@ public class MyCustomMenuController {
         return myCustomMenuService.findById(customMenuId)
             .map(GetCustomMenuResponse::ok);
     }
+
+    @PostMapping("/my/custom-menus")
+    public Mono<ServiceResponse> save(@RequestHeader UUID userId,
+        @RequestBody CreateMyCustomMenuRequest request) {
+        return myCustomMenuService.save(request.toEntity(userId))
+            .map(CreateMyCustomMenuResponse::ok);
+
+    }
+
 }

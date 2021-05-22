@@ -23,4 +23,8 @@ public class MyCustomMenuService {
     public Mono<MyCustomMenu> findById(UUID id) {
         return myCustomMenuRepository.findById(id);
     }
+
+    public Mono<MyCustomMenu> save(MyCustomMenu myCustomMenu) {
+        return myCustomMenuRepository.save(myCustomMenu);
+    }
 }
