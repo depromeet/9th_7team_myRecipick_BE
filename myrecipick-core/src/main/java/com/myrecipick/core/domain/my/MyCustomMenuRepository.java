@@ -9,6 +9,8 @@ import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 import software.amazon.awssdk.services.dynamodb.model.ComparisonOperator;
 import software.amazon.awssdk.services.dynamodb.model.Condition;
+import software.amazon.awssdk.services.dynamodb.model.DeleteItemRequest;
+import software.amazon.awssdk.services.dynamodb.model.DeleteItemResponse;
 import software.amazon.awssdk.services.dynamodb.model.GetItemRequest;
 import software.amazon.awssdk.services.dynamodb.model.GetItemResponse;
 import software.amazon.awssdk.services.dynamodb.model.PutItemRequest;
@@ -67,4 +69,14 @@ public class MyCustomMenuRepository {
             .flatMapMany(Flux::fromIterable);
     }
 
+    public Mono<UUID> delete(UUID customMenuId) {
+        DeleteItemRequest deleteItemRequest = DeleteItemRequest.builder()
+            .tableName(CUSTOM_MENU_TABLE)
+            .key(Map.of("id", AttributeValue.builder().s(customMenuId.toString()).build()))
+            .build();
+
+        return Mono.fromCompletionStage(dynamoDbAsyncClient.deleteItem(deleteItemRequest))
+            .map(DeleteItemResponse::attributes)
+            .map(attributeValueMap -> customMenuId);
+    }
 }

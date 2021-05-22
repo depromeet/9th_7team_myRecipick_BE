@@ -41,6 +41,7 @@ public class CreateMyCustomMenuRequest {
 
     public MyCustomMenu toEntity(UUID userId) {
         return MyCustomMenu.builder()
+            .id(UUID.randomUUID())
             .userId(userId)
             .name(name)
             .menu(menu)

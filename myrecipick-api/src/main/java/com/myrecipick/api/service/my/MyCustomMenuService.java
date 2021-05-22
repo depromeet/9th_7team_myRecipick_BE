@@ -27,4 +27,8 @@ public class MyCustomMenuService {
     public Mono<MyCustomMenu> save(MyCustomMenu myCustomMenu) {
         return myCustomMenuRepository.save(myCustomMenu);
     }
+
+    public Mono<UUID> delete(UUID customMenuId) {
+        return myCustomMenuRepository.delete(customMenuId);
+    }
 }

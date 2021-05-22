@@ -3,7 +3,6 @@ package com.myrecipick.core.domain.my;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -27,9 +26,6 @@ public class MyCustomMenu {
     }
 
     public UUID getId() {
-        if(Objects.isNull(id)) {
-            return UUID.randomUUID();
-        }
         return id;
     }
 

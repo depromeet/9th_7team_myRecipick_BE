@@ -7,6 +7,7 @@ import com.myrecipick.api.controller.my.controller.dto.GetCustomMenuListResponse
 import com.myrecipick.api.controller.my.controller.dto.GetCustomMenuResponse;
 import com.myrecipick.api.service.my.MyCustomMenuService;
 import java.util.UUID;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,7 +44,14 @@ public class MyCustomMenuController {
         @RequestBody CreateMyCustomMenuRequest request) {
         return myCustomMenuService.save(request.toEntity(userId))
             .map(CreateMyCustomMenuResponse::ok);
+    }
 
+
+    @DeleteMapping("/my/custom-menus/{customMenuId}")
+    public Mono<ServiceResponse> delete(@PathVariable UUID customMenuId,
+        @RequestHeader UUID userId) {
+        return myCustomMenuService.delete(customMenuId)
+            .map(id -> DeleteMyCustomMenuResponse.ok());
     }
 
 }
