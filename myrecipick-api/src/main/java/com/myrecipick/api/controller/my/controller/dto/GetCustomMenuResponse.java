@@ -1,28 +1,28 @@
-package com.myrecipick.api.controller.my.menu.controller.dto;
+package com.myrecipick.api.controller.my.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.myrecipick.api.controller.ServiceResponse;
-import com.myrecipick.core.my.menu.CustomMenu;
+import com.myrecipick.core.domain.my.MyCustomMenu;
 import org.springframework.http.HttpStatus;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(Include.NON_NULL)
 public class GetCustomMenuResponse extends ServiceResponse {
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private CustomMenu data;
+    private MyCustomMenu data;
 
     public GetCustomMenuResponse() {
 
     }
 
-    public static GetCustomMenuResponse ok(CustomMenu customMenu) {
+    public static GetCustomMenuResponse ok(MyCustomMenu myCustomMenu) {
         GetCustomMenuResponse getCustomMenuResponse = new GetCustomMenuResponse();
         getCustomMenuResponse.status = HttpStatus.OK;
-        getCustomMenuResponse.data = customMenu;
+        getCustomMenuResponse.data = myCustomMenu;
         return getCustomMenuResponse;
     }
 
-    public CustomMenu getData() {
+    public MyCustomMenu getData() {
         return data;
     }
 }

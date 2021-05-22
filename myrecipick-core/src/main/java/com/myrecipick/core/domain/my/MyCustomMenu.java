@@ -1,34 +1,22 @@
-package com.myrecipick.core.my.menu;
+package com.myrecipick.core.domain.my;
 
-import com.myrecipick.core.domain.option.OptionGroup;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-public class CustomMenu {
+public class MyCustomMenu {
     private UUID id;
     private UUID userId;
-    private UUID menuId;
     private String name;
-    private List<OptionGroup> optionGroups;
-    private Boolean isShow;
+
+    private MyMenu menu;
+    private List<MyOptionGroup> optionGroups;
 
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
-    public CustomMenu() {
+    public MyCustomMenu() {
 
-    }
-
-    public CustomMenu(UUID id, UUID userId, String name, UUID menuId, List<OptionGroup> optionGroups, Boolean isShow, LocalDateTime createdDate, LocalDateTime updatedDate) {
-        this.id = id;
-        this.userId = userId;
-        this.name = name;
-        this.menuId = menuId;
-        this.optionGroups = optionGroups;
-        this.isShow = isShow;
-        this.createdDate = createdDate;
-        this.updatedDate = updatedDate;
     }
 
     public UUID getId() {
@@ -55,28 +43,20 @@ public class CustomMenu {
         this.name = name;
     }
 
-    public UUID getMenuId() {
-        return menuId;
+    public MyMenu getMenu() {
+        return menu;
     }
 
-    public void setMenuId(UUID menuId) {
-        this.menuId = menuId;
+    public void setMenu(MyMenu menu) {
+        this.menu = menu;
     }
 
-    public List<OptionGroup> getOptionGroups() {
+    public List<MyOptionGroup> getOptionGroups() {
         return optionGroups;
     }
 
-    public void setOptionGroups(List<OptionGroup> optionGroups) {
+    public void setOptionGroups(List<MyOptionGroup> optionGroups) {
         this.optionGroups = optionGroups;
-    }
-
-    public Boolean getShow() {
-        return isShow;
-    }
-
-    public void setShow(Boolean show) {
-        isShow = show;
     }
 
     public LocalDateTime getCreatedDate() {
@@ -94,4 +74,6 @@ public class CustomMenu {
     public void setUpdatedDate(LocalDateTime updatedDate) {
         this.updatedDate = updatedDate;
     }
+
+
 }
