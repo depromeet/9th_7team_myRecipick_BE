@@ -21,18 +21,6 @@ public class OptionGroup {
     public OptionGroup() {
     }
 
-    public OptionGroup(UUID id, OptionGroupType type, String name, String image,
-        List<Option> options, OptionPolicy policy, LocalDateTime createdDate, LocalDateTime updatedDate) {
-        this.id = id;
-        this.type = type;
-        this.name = name;
-        this.image = image;
-        this.options = options;
-        this.policy = policy;
-        this.createdDate = createdDate;
-        this.updatedDate = updatedDate;
-    }
-
     public UUID getId() {
         return id;
     }

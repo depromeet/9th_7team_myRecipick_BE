@@ -1,19 +1,19 @@
 package com.myrecipick.core.domain.option;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_NULL)
 public class Option {
 
     private OptionType type;
     private String name;
+    private String description;
+    private String calorie;
     private String image;
     private int order;
 
     public Option() {
-    }
-
-    public Option(OptionType type, String name, String image) {
-        this.type = type;
-        this.name = name;
-        this.image = image;
     }
 
     public OptionType getType() {
@@ -30,6 +30,22 @@ public class Option {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCalorie() {
+        return calorie;
+    }
+
+    public void setCalorie(String calorie) {
+        this.calorie = calorie;
     }
 
     public String getImage() {
