@@ -1,4 +1,4 @@
-package com.myrecipick.api.controller.my.controller;
+package com.myrecipick.api.controller.my.controller.dto;
 
 import com.myrecipick.api.controller.ServiceResponse;
 import org.springframework.http.HttpStatus;
