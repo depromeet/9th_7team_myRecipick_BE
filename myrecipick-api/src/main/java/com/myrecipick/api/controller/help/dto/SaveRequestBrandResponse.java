@@ -10,6 +10,4 @@ public class SaveRequestBrandResponse extends ServiceResponse {
         response.status = HttpStatus.CREATED;
         return response;
     }
-
-
 }
