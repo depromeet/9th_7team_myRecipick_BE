@@ -1,7 +1,6 @@
 package com.myrecipick.api.controller.help;
 
 import com.myrecipick.api.controller.ServiceResponse;
-import com.myrecipick.api.controller.brand.dto.GetBrandsResponse;
 import com.myrecipick.api.controller.help.dto.SaveRequestBrandRequest;
 import com.myrecipick.api.controller.help.dto.SaveRequestBrandResponse;
 import com.myrecipick.api.service.help.RequestBrandService;

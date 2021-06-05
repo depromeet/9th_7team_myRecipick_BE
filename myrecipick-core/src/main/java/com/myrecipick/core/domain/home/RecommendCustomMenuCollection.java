@@ -1,12 +1,13 @@
 package com.myrecipick.core.domain.home;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
 import java.util.UUID;
 
 public class RecommendCustomMenuCollection {
 
-    @JsonInclude
+    @JsonIgnore
     private UUID id;
     private String title;
     private List<RecommendCustomMenu> recommendCustomMenus;
