@@ -1,5 +1,6 @@
 package com.myrecipick.api.controller.home;
 
+import com.myrecipick.api.controller.home.dto.RecommendCustomMenuCollectionResponse;
 import com.myrecipick.api.service.home.HomeService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +16,12 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public Mono<String> home() {
+    public Mono<String> hello() {
         return homeService.hello();
+    }
+
+    @GetMapping("/home")
+    public Mono<RecommendCustomMenuCollectionResponse> home() {
+        return homeService.findCollection();
     }
 }
