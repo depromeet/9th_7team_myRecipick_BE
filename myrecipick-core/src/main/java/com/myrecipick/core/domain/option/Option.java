@@ -8,8 +8,7 @@ public class Option {
 
     private OptionType type;
     private String name;
-    private String description;
-    private String calorie;
+    private OptionInfo info;
     private String image;
     private int order;
 
@@ -32,20 +31,12 @@ public class Option {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public OptionInfo getInfo() {
+        return info;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getCalorie() {
-        return calorie;
-    }
-
-    public void setCalorie(String calorie) {
-        this.calorie = calorie;
+    public void setInfo(OptionInfo info) {
+        this.info = info;
     }
 
     public String getImage() {

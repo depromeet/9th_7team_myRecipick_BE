@@ -1,5 +1,6 @@
 package com.myrecipick.core.domain.option;
 
+import com.myrecipick.core.domain.option.OptionInfo.Builder;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -24,19 +25,33 @@ public class OptionMapper {
     public static Option fromMap(Map<String, AttributeValue> attributeValueMap) {
         Option option = new Option();
         option.setName(attributeValueMap.get("name").s());
-        if(Objects.nonNull(attributeValueMap.get("description"))) {
-            option.setDescription(attributeValueMap.get("description").s());
+
+
+        if(Objects.nonNull(attributeValueMap.get("info"))) {
+            OptionInfo optionInfo = getInfo(attributeValueMap.get("info").m());
+            option.setInfo(optionInfo);
         }
-        if(Objects.nonNull(attributeValueMap.get("description"))) {
-            option.setDescription(attributeValueMap.get("description").s());
-        }
-        if(Objects.nonNull(attributeValueMap.get("calorie"))) {
-            option.setCalorie(attributeValueMap.get("calorie").s());
-        }
+
         option.setType(OptionType.valueOf(attributeValueMap.get("type").s()));
         option.setImage(attributeValueMap.get("image").s());
         option.setOrder(Integer.parseInt(attributeValueMap.get("order").n()));
         return option;
+    }
+
+    private static OptionInfo getInfo(Map<String, AttributeValue> info) {
+        Builder builder = OptionInfo.builder();
+        if(Objects.nonNull(info.get("description"))) {
+            builder.description(info.get("description").s());
+        }
+
+        if(Objects.nonNull(info.get("calorie"))) {
+            builder.calorie(info.get("calorie").s());
+        }
+
+        if(Objects.nonNull(info.get("image"))) {
+            builder.image(info.get("image").s());
+        }
+        return builder.build();
     }
 
 }
