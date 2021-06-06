@@ -20,7 +20,7 @@ public class HomeController {
         return homeService.hello();
     }
 
-    @GetMapping("/home")
+    @GetMapping({"/home", "/v1/home"})
     public Mono<RecommendCustomMenuCollectionResponse> home() {
         return homeService.findCollection();
     }
