@@ -1,5 +1,7 @@
 package com.myrecipick.core.domain.my;
 
+import org.springframework.util.StringUtils;
+
 public class MyOption {
     private String name;
     private String image;
@@ -38,7 +40,7 @@ public class MyOption {
         }
 
         public Builder image(String image) {
-            this.image = image;
+            this.image = StringUtils.replace(image, "Illustration/Subway/Ingredients", "Illustration/Subway/Share");
             return this;
         }
 
